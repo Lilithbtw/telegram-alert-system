@@ -17,7 +17,7 @@ def send(mssg: str):
     post(f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage", data={'text': mssg, 'chat_id': GROUP_ID})
 
 def cpu():
-    MAX_CPU_USAGE = os.getenv("MAX_CPU_USAGE")
+    MAX_CPU_USAGE = int(os.getenv("MAX_CPU_USAGE"))
     cpu_usage = psutil.cpu_percent(interval=None)
     if cpu_usage >= MAX_CPU_USAGE:
         send(f"Warning! The system {hostname} is at {cpu_usage}%")
